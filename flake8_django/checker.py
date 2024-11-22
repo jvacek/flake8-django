@@ -4,15 +4,21 @@ import sys
 
 import astroid
 
-from flake8_django.checkers import (DecoratorChecker, ModelContentOrderChecker,
-                                    ModelDunderStrMissingChecker,
-                                    ModelFieldChecker, ModelFormChecker,
-                                    ModelMetaChecker, RenderChecker)
+from flake8_django.checkers import (
+    DecoratorChecker,
+    ModelContentOrderChecker,
+    ModelDunderStrMissingChecker,
+    ModelFieldChecker,
+    ModelFormChecker,
+    ModelMetaChecker,
+    RenderChecker,
+    SerializerChecker,
+)
 
 __version__ = '1.1.5'
 
 
-CHECKS_DISABLED_BY_DEFAULT = ['DJ10', 'DJ11']
+CHECKS_DISABLED_BY_DEFAULT = ["DJ10", "DJ11", "DJ26", "DJ27"]
 
 
 class DjangoStyleFinder(ast.NodeVisitor):
@@ -57,6 +63,7 @@ class AstroidTreeVisitor:
             ModelFormChecker(),
             ModelDunderStrMissingChecker(),
             ModelContentOrderChecker(),
+            SerializerChecker(),
         )
     }
 
